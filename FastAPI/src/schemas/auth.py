@@ -1,5 +1,6 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class LoginIn(BaseModel):
-    user_id: int
+    """Schema para requisição de login"""
+    user_id: int = Field(..., description="ID do usuário para autenticação", gt=0)

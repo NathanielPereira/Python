@@ -15,7 +15,8 @@ if config.config_file_name is not None:
 
 
 from src.database import engine, metadata  # noqa
-from src.models.post import posts  # noqa
+from src.models.conta import contas  # noqa
+from src.models.transacao import transacoes  # noqa
 
 target_metadata = metadata
 
@@ -32,7 +33,7 @@ def run_migrations_offline() -> None:
     script output.
 
     """
-    url = settings.database_url
+    url = settings.database_url.replace("+aiosqlite", "")
     context.configure(
         url=url,
         target_metadata=target_metadata,
